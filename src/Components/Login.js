@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "../CSS/login.css";
 import { apiUrl , createUrl} from "../Configuration/config.js"
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -22,23 +25,32 @@ function Login() {
         "password": password})
     });
     
-    if(response.ok){
+    if (response.ok) {
       const data = await response.json();
-      if(data){
-       navigate("/dashboard")
+      if (data) {
+        toast.success("Login successful!", {
+          position: "top-right", // Notification position
+          autoClose: 3000,       // Auto close after 3 seconds
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        });
+        
+        navigate("/dashboard");
+      } else {
+        toast.error("Invalid credentials. Please try again.");
+        navigate("/login");
       }
-      else{
-        navigate("/login")
-      }
+    } else {
+      toast.error("Failed to connect to the server.");
     }
-    else{
-
-    }
-   }
-   catch(err){
-  console.error("Error during login", err);
-   }
-  };
+  } catch (err) {
+    console.error("Error during login", err);
+    toast.error("An unexpected error occurred. Please try again.");
+  }
+};
 
   return (
     <div className="login-container">
