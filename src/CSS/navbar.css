@@ -1,0 +1,59 @@
+/* General Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#6cc5b8; /* Navbar background color */
+    padding: 1rem 2rem;
+    color: white; /* Text color */
+  }
+  
+  /* Logo Styles */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Navigation Links */
+  .ul-list {
+    list-style: none; /* Remove default bullet points */
+    display: flex; /* Arrange items horizontally */
+    gap: 1.5rem; /* Space between menu items */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .ul-list li {
+    display: inline; /* Inline list items */
+  }
+  
+  .ul-list a {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Font size */
+    transition: color 0.3s; /* Smooth color change */
+  }
+  
+  .ul-list a:hover {
+    color: #ffd700; /* Highlight color on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: flex-start;
+      padding: 1rem;
+    }
+  
+    .ul-list {
+      flex-direction: column; /* Stack menu items vertically */
+      gap: 1rem;
+      width: 100%;
+    }
+  
+    .ul-list a {
+      font-size: 1.2rem;
+    }
+  }
+  

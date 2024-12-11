@@ -1,0 +1,1 @@
+export const validate_url = "https://localhost:44361/validate";
