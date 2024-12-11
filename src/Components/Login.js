@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import "../CSS/login.css";
 import { apiUrl , createUrl} from "../Configuration/config.js"
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {toastStyle} from "../CSS/toastStyle.js";
 
 
 function Login() {
@@ -28,27 +29,19 @@ function Login() {
     if (response.ok) {
       const data = await response.json();
       if (data) {
-        toast.success("Login successful!", {
-          position: "top-right", // Notification position
-          autoClose: 3000,       // Auto close after 3 seconds
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined
-        });
+        toast.success("Login successful!",toastStyle);
         
         navigate("/dashboard");
       } else {
-        toast.error("Invalid credentials. Please try again.");
+        toast.error("Invalid credentials. Please try again.",toastStyle);
         navigate("/login");
       }
     } else {
-      toast.error("Failed to connect to the server.");
+      toast.error("Failed to connect to the server.",toastStyle);
     }
   } catch (err) {
     console.error("Error during login", err);
-    toast.error("An unexpected error occurred. Please try again.");
+    toast.error("An unexpected error occurred. Please try again.",toastStyle);
   }
 };
 
