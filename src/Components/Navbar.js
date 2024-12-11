@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "../CSS/navbar.css";
 
 function Navbar() {
-  const [isMobile, setIsMobile] = useState(false);
 
   return (
     <nav className="navbar">

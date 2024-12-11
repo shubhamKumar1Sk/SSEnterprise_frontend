@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../CSS/login.css";
-import "../Configuration/config.js"
+import { apiUrl , createUrl} from "../Configuration/config.js"
 import { useNavigate } from "react-router-dom";
-import { validate_url } from "../Configuration/config.js";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -13,7 +12,8 @@ function Login() {
     e.preventDefault();
     console.log("Login Details:", { email, password });
    try {
-    const response = await fetch(validate_url, {
+    const url = createUrl(apiUrl,"validate")
+    const response = await fetch(url, {
       method: "POST",
       headers: {
        "Content-Type" : "application/json"
@@ -67,7 +67,6 @@ function Login() {
         <button type="submit" className="login-button">
           Login
         </button>
-        <a href=""></a>
       </form>
     </div>
   );
